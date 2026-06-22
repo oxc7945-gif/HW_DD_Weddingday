@@ -89,8 +89,13 @@
      예) 부모님 정보 추가 시:
      { role:'신랑 아버지', name:'이점효', phone:'010-0000-0000', bank:'은행명', account:'000-000-000000' } */
   const GIFT_LIST = [
-    { role:'신랑', name:'이동진', phone:'010-2811-5747', bank:'신한', account:'110-507-729290' },
-    { role:'신부', name:'신혜원', phone:'010-5493-5615', bank:'신한', account:'110-457-849718' }
+    { role:'신랑',        name:'이동진', phone:'010-2811-5747', bank:'신한', account:'110-507-729290' },
+    { role:'신랑 아버지', name:'이점효', phone:'010-2586-0021', bank:'농협', account:'843014-52-042074' },
+    { role:'신랑 어머니', name:'김금순', phone:'010-3738-5747', bank:'농협', account:'843014-52-042074' },
+    { divider: true },
+    { role:'신부',        name:'신혜원', phone:'010-5493-5615', bank:'신한', account:'110-457-849718' },
+    { role:'신부 아버지', name:'신종원', phone:'010-2961-5606', bank:'기업', account:'403-024597-01-011' },
+    { role:'신부 어머니', name:'한은경', phone:'010-4704-5606', bank:'기업', account:'403-005028-01-019' }
   ];
 
   /* ── 예식 일시 ── */
@@ -404,15 +409,7 @@
     position:relative; height:320px; width:100%;
     background:var(--bg2); margin-bottom:18px; overflow:hidden;
   }
-  .map-box iframe{ width:100%; height:100%; border:0; }
-  .map-overlay{
-    position:absolute; inset:0; z-index:2;
-    background:color-mix(in srgb, var(--ink) 55%, transparent);
-    display:flex; align-items:center; justify-content:center;
-    color:var(--white); font-size:14px; font-weight:300;
-    cursor:pointer; transition:opacity 0.4s ease; word-break:keep-all;
-  }
-  .map-overlay.hide{ opacity:0; pointer-events:none; }
+  .map-box img{ width:100%; height:100%; object-fit:cover; }
   .map-btn-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:36px; }
   .map-btn{
     padding:13px 4px; text-align:center; font-size:13px; font-weight:600;
@@ -534,6 +531,7 @@
     margin-bottom:28px; word-break:keep-all;
   }
   .gift-list{ display:flex; flex-direction:column; gap:12px; text-align:left; }
+  .gift-divider{ height:20px; }
   .gift-card{ border:1px solid var(--line); border-radius:2px; overflow:hidden; }
   .gift-head{
     width:100%; display:flex; align-items:center; justify-content:space-between;
@@ -673,7 +671,7 @@
     <div class="hero-veil"></div>
     <div class="petal-layer" id="petalLayer"></div>
     <div class="hero-content">
-      <p class="lead-copy fade-up">서로를 알아본 순간부터 지금까지,<br>다정함과 웃음으로 채워온 시간이<br>이제 하나의 약속이 되었습니다.</p>
+      <p class="lead-copy fade-up">혼자보다 둘이서 걷는 길이 더 기대되고 설레기에,<br>서로의 손을 꼭 잡고 새로운 시작을 나섭니다.<br>저희의 시작점에 따뜻한 응원을 더해 주세요.</p>
       <p class="names fade-up">이동진<span class="heart">♥</span>신혜원</p>
       <div class="info-box fade-up">
         <p class="kdate" id="heroKDate"></p>
@@ -730,8 +728,7 @@
       <p class="vaddr">서울특별시 영등포구 은행로 30</p>
     </div>
     <div class="map-box fade-up" id="mapBox">
-      <iframe id="mapFrame" src="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> <!-- 교체 필요(2탄) : 구글맵 iframe src -->
-      <div class="map-overlay" id="mapOverlay">터치하여 지도를 확인하세요</div>
+      <img src="./map.jpg" alt="더 파티움 여의도 약도" style="width:100%;height:100%;object-fit:cover;">
     </div>
     <div class="map-btn-grid fade-up">
       <a class="map-btn kakao" id="kakaoMapBtn" target="_blank" rel="noopener">카카오맵</a>
@@ -1143,15 +1140,9 @@
   })();
 
   /* ====================================================================
-   * 6. 오시는 길 — 지도 오버레이 / 지도 앱 연결
+   * 6. 오시는 길 — 지도 앱 연결
    * ==================================================================== */
   (function initLocation(){
-    var overlay = document.getElementById('mapOverlay');
-    overlay.addEventListener('click', function(){
-      overlay.classList.add('hide');
-      toast('지도를 터치하거나 드래그해 확인해 보세요');
-    });
-
     var addrEnc = encodeURIComponent(VENUE_ADDR);
     var nameEnc = encodeURIComponent(VENUE_NAME);
 
@@ -1336,6 +1327,7 @@
   var PHONE_ICON_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.2 2.2z"/></svg>';
 
   function buildGiftCard(item, idx){
+    if (item.divider) return '<div class="gift-divider"></div>';
     var telNum = item.phone.replace(/-/g, '');
     var accNum = item.account.replace(/-/g, '');
     return '<div class="gift-card">' +
