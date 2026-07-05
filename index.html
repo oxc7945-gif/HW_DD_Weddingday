@@ -62,7 +62,7 @@
    * ====================================================== */
 
   /* ── 배포 URL (OG 태그 · 카카오 공유에만 사용) ── */
-  const SITE_URL = 'https://hw-dd-weddingday.vercel.app/'; /* 교체 필요 : Vercel 배포 후 실제 주소로 교체 */
+  const SITE_URL = 'https://your-site.vercel.app'; /* 교체 필요 : Vercel 배포 후 실제 주소로 교체 */
 
   /* ── OG 이미지 (SNS·카카오톡 공유 시 표시되는 썸네일) ── */
   const OG_IMAGE = SITE_URL + '/hero.jpg';
@@ -91,7 +91,7 @@
   const GIFT_LIST = [
     { role:'신랑',        name:'이동진', phone:'010-2811-5747', bank:'신한', account:'110-507-729290' },
     { role:'신랑 아버지', name:'이점효', phone:'010-2586-0021', bank:'농협', account:'843014-52-042074' },
-    { role:'신랑 어머니', name:'김금순', phone:'010-3738-5747', bank:'농협', account:'843014-52-094183' },
+    { role:'신랑 어머니', name:'김금순', phone:'010-3738-5747', bank:'농협', account:'843014-52-042074' },
     { divider: true },
     { role:'신부',        name:'신혜원', phone:'010-5493-5615', bank:'신한', account:'110-457-849718' },
     { role:'신부 아버지', name:'신종원', phone:'010-2961-5606', bank:'기업', account:'403-024597-01-011' },
@@ -433,58 +433,7 @@
   .trans-card li::before{ content:'·'; position:absolute; left:0; color:var(--primary-lt); }
 
   /* ===================================================================
-   * 7. RSVP
-   * =================================================================== */
-  #rsvp{ background:var(--ink); color:var(--white); text-align:center; }
-  #rsvp .sec-title{ color:var(--white); }
-  #rsvp .rsvp-desc{ font-size:14px; font-weight:300; margin-bottom:34px; color:color-mix(in srgb, var(--white) 80%, transparent); word-break:keep-all; }
-  .rsvp-open-btn{
-    padding:16px 38px; background:var(--accent); color:var(--ink);
-    font-size:15px; font-weight:600; white-space:nowrap; border-radius:2px;
-  }
-  .modal-overlay{
-    position:fixed; inset:0; z-index:100;
-    background:rgba(0,0,0,0.55);
-    display:none; align-items:flex-end; justify-content:center;
-  }
-  .modal-overlay.open{ display:flex; }
-  .modal-card{
-    width:100%; max-width:430px; max-height:88vh; overflow-y:auto;
-    background:var(--white); color:var(--ink);
-    border-radius:18px 18px 0 0; padding:28px 24px calc(28px + var(--sab));
-    animation:modalUp 0.35s cubic-bezier(.2,.9,.3,1);
-  }
-  @keyframes modalUp{ from{transform:translateY(100%);} to{transform:translateY(0);} }
-  .modal-card h3{ font-family:'Noto Serif KR',serif; font-size:19px; text-align:center; margin-bottom:22px; font-weight:500; }
-  .f-group{ margin-bottom:20px; }
-  .f-group label{ display:block; font-size:13px; color:var(--muted); margin-bottom:8px; font-weight:500; }
-  .radio-row{ display:flex; gap:10px; }
-  .radio-row label{
-    flex:1; border:1px solid var(--line); padding:11px 0; text-align:center;
-    font-size:13.5px; color:var(--ink); margin:0; cursor:pointer; font-weight:400;
-    white-space:nowrap;
-  }
-  .radio-row input{ display:none; }
-  .radio-row input:checked + span{ font-weight:700; }
-  .radio-row label.checked{ border-color:var(--primary); background:var(--bg2); color:var(--primary); }
-  .f-group input[type="text"], .f-group select{
-    width:100%; padding:12px 14px; border:1px solid var(--line);
-    background:var(--white); font-size:14.5px; border-radius:2px;
-  }
-  .f-group input[type="text"]:focus, .f-group select:focus{ outline:2px solid var(--primary-lt); }
-  #busField{ display:none; }
-  .submit-btn{
-    width:100%; padding:16px 0; background:var(--ink); color:var(--white);
-    font-size:15px; font-weight:600; margin-top:8px; white-space:nowrap; border-radius:2px;
-  }
-  .modal-close{
-    position:absolute; top:18px; right:18px; font-size:22px; color:var(--muted);
-    line-height:1; width:30px; height:30px;
-  }
-  .modal-card{ position:relative; }
-
-  /* ===================================================================
-   * 8. 갤러리
+   * 11. 푸터 & 플로팅
    * =================================================================== */
   #gallery{ background:var(--cream); padding-left:0; padding-right:0; }
   #gallery .sec-title{ padding:0 24px; }
@@ -570,50 +519,6 @@
     font-size:12px; padding:9px 14px; white-space:nowrap; border-radius:2px;
     background:var(--bg2); color:var(--ink); font-weight:500; flex-shrink:0;
   }
-
-  /* ===================================================================
-   * 10. 사진 공유하기
-   * =================================================================== */
-  #memory{ background:var(--bg2); text-align:center; }
-  .mem-btns{ display:flex; flex-direction:column; gap:12px; }
-  .mem-btn{
-    padding:17px 0; font-size:14.5px; font-weight:600; white-space:nowrap; border-radius:2px;
-  }
-  .mem-btn.primary{ background:var(--primary); color:var(--white); }
-  .mem-btn.outline{ background:var(--white); color:var(--ink); border:1px solid var(--line); }
-  .mem-btn small{ display:block; font-size:11.5px; font-weight:300; margin-top:4px; opacity:0.85; }
-  .upload-overlay{
-    position:fixed; inset:0; z-index:300; background:var(--ink);
-    display:none; flex-direction:column; padding:calc(20px + var(--sat)) 20px calc(20px + var(--sab));
-    color:var(--white); overflow-y:auto;
-  }
-  .upload-overlay.open{ display:flex; }
-  .up-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
-  .up-head h4{ font-size:15px; font-weight:500; }
-  .up-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:18px; }
-  .up-thumb{ position:relative; aspect-ratio:1/1; background:#222; border-radius:4px; overflow:hidden; }
-  .up-thumb img, .up-thumb .vicon{ width:100%; height:100%; object-fit:cover; }
-  .up-thumb .vicon{ display:flex; align-items:center; justify-content:center; font-size:26px; }
-  .up-thumb .badge{
-    position:absolute; top:4px; right:4px; font-size:10px; padding:2px 6px;
-    border-radius:8px; color:#fff; white-space:nowrap;
-  }
-  .up-thumb .badge.err{ background:#c0392b; }
-  .up-thumb .badge.ok{ background:#27ae60; }
-  .up-thumb .spinner{
-    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-  }
-  .up-thumb .spinner::after{
-    content:''; width:20px; height:20px; border-radius:50%;
-    border:2px solid rgba(255,255,255,0.3); border-top-color:#fff;
-    animation:spin 0.8s linear infinite;
-  }
-  @keyframes spin{ to{ transform:rotate(360deg); } }
-  .up-note{ font-size:12px; color:rgba(255,255,255,0.6); text-align:center; margin-bottom:14px; word-break:keep-all; }
-  .up-progress-wrap{ margin-top:auto; }
-  .up-counter{ text-align:center; font-size:13px; margin-bottom:8px; }
-  .up-bar-bg{ height:5px; background:rgba(255,255,255,0.15); border-radius:4px; overflow:hidden; }
-  .up-bar{ height:100%; width:0%; background:var(--accent); transition:width 0.3s ease; }
 
   /* ===================================================================
    * 11. 푸터 & 플로팅
@@ -762,16 +667,6 @@
   </section>
 
   <!-- ============================================================
-       7. RSVP
-  ============================================================ -->
-  <section id="rsvp">
-    <span class="eyebrow fade-up">RSVP</span>
-    <h2 class="sec-title fade-up">참석 의사 전달</h2>
-    <p class="rsvp-desc fade-up">소중한 발걸음을 미리 준비하기 위해<br>참석 여부를 전해주시면 감사하겠습니다.</p>
-    <button class="rsvp-open-btn fade-up" id="rsvpOpenBtn">참석 여부 전달하기</button>
-  </section>
-
-  <!-- ============================================================
        8. 갤러리
   ============================================================ -->
   <section id="gallery">
@@ -794,19 +689,6 @@
   </section>
 
   <!-- ============================================================
-       10. 사진 공유하기
-  ============================================================ -->
-  <section id="memory">
-    <span class="eyebrow fade-up">Memory</span>
-    <h2 class="sec-title fade-up">사진 공유하기</h2>
-    <div class="mem-btns fade-up">
-      <button class="mem-btn primary" id="quickUploadBtn">간편 보내기<small>4MB 이하 사진 · 영상</small></button>
-      <button class="mem-btn outline" id="driveBtn">고화질 원본 보내기<small>구글 드라이브로 이동합니다</small></button>
-    </div>
-    <input type="file" id="fileInput" multiple accept="image/*,video/*" style="display:none">
-  </section>
-
-  <!-- ============================================================
        FOOTER
   ============================================================ -->
   <footer>
@@ -821,56 +703,6 @@
 </div><!-- /.wrap -->
 
 <!-- ============================================================
-     RSVP 모달
-============================================================ -->
-<div class="modal-overlay" id="rsvpModal">
-  <div class="modal-card">
-    <button class="modal-close" id="rsvpCloseBtn">&times;</button>
-    <h3>참석 의사 전달</h3>
-    <form id="rsvpForm">
-      <div class="f-group">
-        <label>구분</label>
-        <div class="radio-row" id="sideRow">
-          <label><input type="radio" name="side" value="신랑측" checked><span>신랑측</span></label>
-          <label><input type="radio" name="side" value="신부측"><span>신부측</span></label>
-        </div>
-      </div>
-      <div class="f-group">
-        <label>성함</label>
-        <input type="text" id="guestName" placeholder="이름을 입력해 주세요" required>
-      </div>
-      <div class="f-group">
-        <label>동반 인원 (본인 포함)</label>
-        <select id="guestCount">
-          <option value="1">1명</option>
-          <option value="2">2명</option>
-          <option value="3">3명</option>
-          <option value="4">4명</option>
-          <option value="5">5명 이상</option>
-        </select>
-      </div>
-      <div class="f-group">
-        <label>어린이 동반 (만 5~8세)</label>
-        <select id="childCount">
-          <option value="0">없음</option>
-          <option value="1">1명</option>
-          <option value="2">2명</option>
-          <option value="3">3명 이상</option>
-        </select>
-      </div>
-      <div class="f-group">
-        <label>참석 여부</label>
-        <div class="radio-row" id="attendRow">
-          <label><input type="radio" name="attend" value="참석합니다" checked><span>참석합니다</span></label>
-          <label><input type="radio" name="attend" value="마음만 전해요"><span>마음만 전해요</span></label>
-        </div>
-      </div>
-      <button type="submit" class="submit-btn">전달하기</button>
-    </form>
-  </div>
-</div>
-
-<!-- ============================================================
      갤러리 모달
 ============================================================ -->
 <div class="gal-modal" id="galModal">
@@ -879,22 +711,6 @@
   <button class="g-nav g-prev" id="galPrevBtn">&#8249;</button>
   <img id="galModalImg" src="" alt="갤러리 이미지">
   <button class="g-nav g-next" id="galNextBtn">&#8250;</button>
-</div>
-
-<!-- ============================================================
-     사진 업로드 오버레이
-============================================================ -->
-<div class="upload-overlay" id="uploadOverlay">
-  <div class="up-head">
-    <h4>사진 / 영상 보내기</h4>
-    <button id="uploadCloseBtn" style="color:#fff;font-size:22px;">&times;</button>
-  </div>
-  <div class="up-grid" id="uploadGrid"></div>
-  <p class="up-note">화면을 그대로 유지해 주세요</p>
-  <div class="up-progress-wrap">
-    <p class="up-counter" id="uploadCounter"></p>
-    <div class="up-bar-bg"><div class="up-bar" id="uploadBar"></div></div>
-  </div>
 </div>
 
 <div class="toast" id="toastBox"></div>
@@ -1162,90 +978,6 @@
   })();
 
   /* ====================================================================
-   * 7. RSVP — 모달 / 스크롤 잠금 / 제출
-   * ==================================================================== */
-  (function initRSVP(){
-    var modal = document.getElementById('rsvpModal');
-    var openBtn = document.getElementById('rsvpOpenBtn');
-    var closeBtn = document.getElementById('rsvpCloseBtn');
-    var form = document.getElementById('rsvpForm');
-    var attendRow = document.getElementById('attendRow');
-    var _scrollY = 0;
-
-    function lockScroll(){
-      _scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = '-' + _scrollY + 'px';
-      document.body.style.width = '100%';
-    }
-    function unlockScroll(){
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      window.scrollTo(0, _scrollY);
-    }
-    function openModal(){ modal.classList.add('open'); lockScroll(); }
-    function closeModal(){ modal.classList.remove('open'); unlockScroll(); }
-
-    openBtn.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
-
-    /* 라디오 선택 시 보이는 카드 스타일 토글 */
-    document.querySelectorAll('.radio-row').forEach(function(row){
-      row.querySelectorAll('input[type="radio"]').forEach(function(inp){
-        inp.addEventListener('change', function(){
-          row.querySelectorAll('label').forEach(function(l){ l.classList.remove('checked'); });
-          inp.closest('label').classList.add('checked');
-        });
-      });
-      var checked = row.querySelector('input:checked');
-      if (checked) checked.closest('label').classList.add('checked');
-    });
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-
-      if (GAS_URL === ''){
-        toast('현재 참석 전달 기능을 준비 중입니다 🙏');
-        return;
-      }
-
-      var name = document.getElementById('guestName').value.trim();
-      if (!name){ toast('성함을 입력해 주세요'); return; }
-
-      var dupKey = 'rsvp_submitted_' + name;
-      if (localStorage.getItem(dupKey)){
-        var ok = confirm('이미 참석 의사를 전달하셨습니다. 내용을 수정하시겠습니까?');
-        if (!ok) return;
-      }
-
-      var fd = new FormData();
-      fd.append('action', 'rsvp');
-      fd.append('side', form.querySelector('input[name="side"]:checked').value);
-      fd.append('name', name);
-      fd.append('guestCount', document.getElementById('guestCount').value);
-      fd.append('childCount', document.getElementById('childCount').value);
-      fd.append('attend', form.querySelector('input[name="attend"]:checked').value);
-
-      var controller = new AbortController();
-      var timeoutId = setTimeout(function(){ controller.abort(); }, 15000);
-
-      fetch(GAS_URL, { method:'POST', mode:'no-cors', body: fd, signal: controller.signal })
-        .then(function(){
-          clearTimeout(timeoutId);
-          localStorage.setItem(dupKey, '1');
-          closeModal();
-          toast('참석 의사를 전달했습니다 💌');
-        })
-        .catch(function(){
-          clearTimeout(timeoutId);
-          alert('전달 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-        });
-    });
-  })();
-
-  /* ====================================================================
    * 8. 갤러리 — 그리드 생성 / 전체화면 모달 / 스와이프 / 키보드
    * ==================================================================== */
   (function initGallery(){
@@ -1397,174 +1129,6 @@
     try { document.execCommand('copy'); } catch(e){}
     document.body.removeChild(ta);
   }
-
-  /* ====================================================================
-   * 10. 사진 공유하기 — 업로드 기간 / 간편 보내기 / 고화질 원본
-   * ==================================================================== */
-  (function initMemory(){
-    var quickBtn = document.getElementById('quickUploadBtn');
-    var driveBtn = document.getElementById('driveBtn');
-    var fileInput = document.getElementById('fileInput');
-    var overlay = document.getElementById('uploadOverlay');
-    var grid = document.getElementById('uploadGrid');
-    var counterEl = document.getElementById('uploadCounter');
-    var barEl = document.getElementById('uploadBar');
-    var MAX_SIZE = 4 * 1024 * 1024;
-
-    function isUploadWindowOpen(){
-      var now = new Date();
-      var dStart = new Date(_WD); dStart.setHours(0,0,0,0);
-      var dEnd = new Date(_WD); dEnd.setDate(dEnd.getDate()+7); dEnd.setHours(23,59,59,999);
-      return now >= dStart && now <= dEnd;
-    }
-
-    quickBtn.addEventListener('click', function(){
-      if (!isUploadWindowOpen()){
-        toast('사진 업로드 기간이 아닙니다');
-        return;
-      }
-      if (GAS_URL === ''){
-        toast('현재 업로드 기능을 준비 중입니다 🙏');
-        return;
-      }
-      fileInput.click();
-    });
-
-    driveBtn.addEventListener('click', function(){
-      if (!isUploadWindowOpen()){
-        toast('사진 업로드 기간이 아닙니다');
-        return;
-      }
-      if (DRIVE_URL === ''){
-        toast('구글 드라이브 주소를 아직 등록하지 않았습니다');
-        return;
-      }
-      window.open(DRIVE_URL, '_blank');
-    });
-
-    fileInput.addEventListener('change', function(){
-      var files = Array.from(fileInput.files || []);
-      if (!files.length) return;
-      openUploadOverlay(files);
-      fileInput.value = '';
-    });
-
-    document.getElementById('uploadCloseBtn').addEventListener('click', function(){
-      overlay.classList.remove('open');
-    });
-
-    function openUploadOverlay(files){
-      grid.innerHTML = '';
-      overlay.classList.add('open');
-      var items = files.map(function(file, idx){
-        var thumb = document.createElement('div');
-        thumb.className = 'up-thumb';
-        var oversized = file.size > MAX_SIZE;
-        if (file.type.indexOf('image/') === 0){
-          var img = document.createElement('img');
-          var objUrl = URL.createObjectURL(file);
-          img.src = objUrl;
-          thumb.appendChild(img);
-          thumb._objUrl = objUrl;
-        } else {
-          var vicon = document.createElement('div');
-          vicon.className = 'vicon';
-          vicon.textContent = '🎬';
-          thumb.appendChild(vicon);
-        }
-        if (oversized){
-          var badge = document.createElement('span');
-          badge.className = 'badge err';
-          badge.textContent = '용량초과';
-          thumb.appendChild(badge);
-        } else {
-          var spin = document.createElement('div');
-          spin.className = 'spinner';
-          thumb.appendChild(spin);
-        }
-        grid.appendChild(thumb);
-        return { file: file, el: thumb, oversized: oversized };
-      });
-
-      counterEl.textContent = '0 / ' + items.length;
-      barEl.style.width = '0%';
-
-      var doneCount = 0, successCount = 0, oversizeCount = 0, failCount = 0;
-      var validItems = items.filter(function(it){ return !it.oversized; });
-      oversizeCount = items.length - validItems.length;
-
-      function uploadNext(i){
-        if (i >= validItems.length){
-          finish();
-          return;
-        }
-        var item = validItems[i];
-        var reader = new FileReader();
-        reader.onload = function(){
-          var base64 = reader.result.split(',')[1];
-          fetch(GAS_URL, {
-            method:'POST', mode:'no-cors',
-            body: JSON.stringify({ action:'upload', fileName:item.file.name, mimeType:item.file.type, fileData: base64 }),
-            headers: { 'Content-Type':'text/plain' }
-          }).then(function(){
-            markResult(item, true);
-            successCount++;
-          }).catch(function(){
-            markResult(item, false);
-            failCount++;
-          }).finally(function(){
-            doneCount++;
-            updateProgress();
-            uploadNext(i+1);
-          });
-        };
-        reader.onerror = function(){
-          markResult(item, false);
-          failCount++; doneCount++;
-          updateProgress();
-          uploadNext(i+1);
-        };
-        reader.readAsDataURL(item.file);
-      }
-
-      function markResult(item, ok){
-        var spinner = item.el.querySelector('.spinner');
-        if (spinner) spinner.remove();
-        var badge = document.createElement('span');
-        badge.className = 'badge ' + (ok ? 'ok' : 'err');
-        badge.textContent = ok ? '✓' : '✗';
-        item.el.appendChild(badge);
-        if (item.el._objUrl){ URL.revokeObjectURL(item.el._objUrl); }
-      }
-
-      function updateProgress(){
-        var total = items.length;
-        var combined = doneCount + (items.length - validItems.length);
-        counterEl.textContent = combined + ' / ' + total;
-        barEl.style.width = (combined / total * 100) + '%';
-      }
-      updateProgress();
-
-      function finish(){
-        setTimeout(function(){
-          overlay.classList.remove('open');
-          if (successCount > 0 && oversizeCount === 0 && failCount === 0){
-            toast('사진 ' + successCount + '장을 보냈습니다 💌');
-          } else if (successCount > 0 && (oversizeCount > 0 || failCount > 0)){
-            toast(successCount + '장 전송 완료, ' + (oversizeCount+failCount) + '장은 제외되었습니다');
-          } else {
-            toast('전송에 실패했습니다. 잠시 후 다시 시도해 주세요');
-          }
-        }, 700);
-      }
-
-      if (validItems.length === 0){
-        finish();
-      } else {
-        uploadNext(0);
-      }
-    }
-  })();
 
   /* ====================================================================
    * 11. 푸터 — 공유 / 주소 복사 / BGM / 맨 위로
